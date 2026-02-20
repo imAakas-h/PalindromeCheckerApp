@@ -1,51 +1,75 @@
 /**
  * =====================================================
- * MAIN CLASS - UseCase3PalindromeCheckerApp
+ * MAIN CLASS - UseCase6PalindromeCheckerApp
  * =====================================================
  *
- * Use Case 3: Reverse String Based Palindrome Check
+ * Use Case 6: Queue and Stack Based Palindrome Checker
  *
  * Description:
- * This class checks whether a string is a palindrome
- * by reversing the string and comparing it with
- * the original value.
+ * This class validates a palindrome using both a Queue
+ * (FIFO) and a Stack (LIFO) data structure together.
  *
  * At this stage, the application:
- * - Iterates the string in reverse order
- * - Builds a reversed version
- * - Compares original and reversed strings
- * - Displays the validation result
+ * - Inserts characters into both Queue and Stack
+ * - Compares characters from Queue (front) and Stack (top)
+ * - Determines whether the string is a palindrome
+ * - Displays the result
  *
- * This introduces transformation-based validation.
+ * This maps both FIFO and LIFO behavior to palindrome logic.
  *
  * @author Developer
- * @version 3.0
+ * @version 6.0
  */
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
 public class PalindromeCheckerApp {
 
     /**
-     * Application entry point for UC3.
+     * Application entry point for UC6.
      *
      * @param args Command-line arguments
      */
 
     public static void main(String[] args) {
 
-        String original = "racecar";
-        StringBuilder sb = new StringBuilder(original);
-        String reversed = sb.reverse().toString();
+        // Define the input string to validate
+        String input = "civic";
+
+        // Create a Queue to store characters in FIFO order
+        Queue<Character> queue = new LinkedList<>();
+
+        // Create a Stack to store characters in LIFO order
+        Stack<Character> stack = new Stack<>();
+
+        // Insert each character into both queue and stack
+        for (char c : input.toCharArray()) {
+            queue.add(c);
+            stack.push(c);
+        }
+
+        // Flag to track palindrome status
+        boolean isPalindrome = true;
+
+        // Compare characters until the queue becomes empty
+        while (!queue.isEmpty()) {
+            if (queue.poll() != stack.pop()) {
+                isPalindrome = false;
+                break;
+            }
+        }
 
         System.out.println("=====================================================");
-        System.out.println("  Palindrome Checker - UC3: Reverse String Method   ");
+        System.out.println(" Palindrome Checker - UC6: Queue & Stack Method     ");
         System.out.println("=====================================================");
-        System.out.println("Original String : " + original);
-        System.out.println("Reversed String : " + reversed);
+        System.out.println("Input String : " + input);
 
-        if (original.equals(reversed)) {
-            System.out.println("Result          : \"" + original + "\" IS a Palindrome!");
+        if (isPalindrome) {
+            System.out.println("Result       : \"" + input + "\" IS a Palindrome!");
         } else {
-            System.out.println("Result          : \"" + original + "\" is NOT a Palindrome.");
+            System.out.println("Result       : \"" + input + "\" is NOT a Palindrome.");
         }
     }
 }
