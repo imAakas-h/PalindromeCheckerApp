@@ -1,70 +1,51 @@
 /**
  * =====================================================
- * MAIN CLASS - UseCase5PalindromeCheckerApp
+ * MAIN CLASS - UseCase3PalindromeCheckerApp
  * =====================================================
  *
- * Use Case 5: Stack Based Palindrome Checker
+ * Use Case 3: Reverse String Based Palindrome Check
  *
  * Description:
- * This class validates a palindrome using a Stack
- * data structure which follows the LIFO principle.
+ * This class checks whether a string is a palindrome
+ * by reversing the string and comparing it with
+ * the original value.
  *
  * At this stage, the application:
- * - Pushes characters into a stack
- * - Pops them in reverse order
- * - Compares with original sequence
- * - Displays the result
+ * - Iterates the string in reverse order
+ * - Builds a reversed version
+ * - Compares original and reversed strings
+ * - Displays the validation result
  *
- * This maps stack behavior to reversal logic.
+ * This introduces transformation-based validation.
  *
  * @author Developer
- * @version 5.0
+ * @version 3.0
  */
-
-import java.util.Stack;
 
 public class PalindromeCheckerApp {
 
     /**
-     * Application entry point for UC5.
+     * Application entry point for UC3.
      *
      * @param args Command-line arguments
      */
 
     public static void main(String[] args) {
 
-        // Declare and initialize the input string
-        String input = "noon";
-
-        // Create a Stack to store characters
-        Stack<Character> stack = new Stack<>();
-
-        // Push each character of the string into the stack
-        for (char c : input.toCharArray()) {
-            stack.push(c);
-        }
-
-        // Assume palindrome initially
-        boolean isPalindrome = true;
-
-        // Iterate again through original string
-        // and compare with popped stack characters
-        for (char c : input.toCharArray()) {
-            if (c != stack.pop()) {
-                isPalindrome = false;
-                break;
-            }
-        }
+        String original = "racecar";
+        StringBuilder sb = new StringBuilder(original);
+        String reversed = sb.reverse().toString();
 
         System.out.println("=====================================================");
-        System.out.println("   Palindrome Checker - UC5: Stack Based Method     ");
+        System.out.println("  Palindrome Checker - UC3: Reverse String Method   ");
         System.out.println("=====================================================");
-        System.out.println("Input String : " + input);
+        System.out.println("Original String : " + original);
+        System.out.println("Reversed String : " + reversed);
 
-        if (isPalindrome) {
-            System.out.println("Result       : \"" + input + "\" IS a Palindrome!");
+        if (original.equals(reversed)) {
+            System.out.println("Result          : \"" + original + "\" IS a Palindrome!");
         } else {
-            System.out.println("Result       : \"" + input + "\" is NOT a Palindrome.");
+            System.out.println("Result          : \"" + original + "\" is NOT a Palindrome.");
         }
     }
 }
