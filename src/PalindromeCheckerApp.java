@@ -1,54 +1,70 @@
 /**
  * =====================================================
- * MAIN CLASS - UseCase2PalindromeCheckerApp
+ * MAIN CLASS - UseCase4PalindromeCheckerApp
  * =====================================================
  *
- * Use Case 2: Hardcoded Palindrome Validation
+ * Use Case 4: Two Pointer Based Palindrome Check
  *
  * Description:
- * This class demonstrates basic palindrome validation
- * using a hardcoded string value.
+ * This class checks whether a string is a palindrome
+ * using the two-pointer technique with a character array.
  *
  * At this stage, the application:
- * - Stores a predefined string
- * - Compares characters from both ends
- * - Determines whether the string is a palindrome
- * - Displays the result on the console
+ * - Converts string to a character array
+ * - Uses start and end pointers
+ * - Compares characters from both ends moving inward
+ * - Displays the validation result
  *
- * This use case introduces fundamental comparison logic
- * before using advanced data structures.
+ * This introduces pointer-based comparison logic.
  *
  * @author Developer
- * @version 2.0
+ * @version 4.0
  */
 
 public class PalindromeCheckerApp {
 
     /**
-     * Application entry point for UC2.
+     * Application entry point for UC4.
      *
      * @param args Command-line arguments
      */
 
     public static void main(String[] args) {
 
-        String word = "madam";
-        String reversed = "";
+        // Declare and initialize the input string
+        String input = "radar";
 
-        for (int i = word.length() - 1; i >= 0; i--) {
-            reversed += word.charAt(i);
+        // Convert the string into a character array
+        char[] chars = input.toCharArray();
+
+        // Initialize pointer at the beginning
+        int start = 0;
+
+        // Initialize pointer at the end
+        int end = chars.length - 1;
+
+        // Assume palindrome initially
+        boolean isPalindrome = true;
+
+        // Continue comparison until pointers cross
+        while (start < end) {
+            if (chars[start] != chars[end]) {
+                isPalindrome = false;
+                break;
+            }
+            start++;
+            end--;
         }
 
         System.out.println("=====================================================");
-        System.out.println("   Palindrome Checker - UC2: Hardcoded Validation   ");
+        System.out.println("  Palindrome Checker - UC4: Two Pointer Technique   ");
         System.out.println("=====================================================");
-        System.out.println("Input Word : " + word);
-        System.out.println("Reversed   : " + reversed);
+        System.out.println("Input String : " + input);
 
-        if (word.equals(reversed)) {
-            System.out.println("Result     : \"" + word + "\" IS a Palindrome!");
+        if (isPalindrome) {
+            System.out.println("Result       : \"" + input + "\" IS a Palindrome!");
         } else {
-            System.out.println("Result     : \"" + word + "\" is NOT a Palindrome.");
+            System.out.println("Result       : \"" + input + "\" is NOT a Palindrome.");
         }
     }
 }
