@@ -1,70 +1,43 @@
 /**
  * =====================================================
- * MAIN CLASS - UseCase4PalindromeCheckerApp
+ * MAIN CLASS - UseCase1PalindromeApp
  * =====================================================
  *
- * Use Case 4: Two Pointer Based Palindrome Check
+ * Use Case 1: Application Entry & Welcome Message
  *
  * Description:
- * This class checks whether a string is a palindrome
- * using the two-pointer technique with a character array.
+ * This class represents the entry point of the
+ * Palindrome Checker Management System.
  *
  * At this stage, the application:
- * - Converts string to a character array
- * - Uses start and end pointers
- * - Compares characters from both ends moving inward
- * - Displays the validation result
+ * - Starts execution from the main() method
+ * - Displays a welcome message
+ * - Shows application version
  *
- * This introduces pointer-based comparison logic.
+ * No palindrome logic is implemented yet.
+ *
+ * The goal is to establish a clear startup flow.
  *
  * @author Developer
- * @version 4.0
+ * @version 1.0
  */
 
 public class PalindromeCheckerApp {
 
     /**
-     * Application entry point for UC4.
+     * Application entry point.
+     *
+     * This is the first method executed by the JVM
+     * when the program starts.
      *
      * @param args Command-line arguments
      */
 
     public static void main(String[] args) {
-
-        // Declare and initialize the input string
-        String input = "radar";
-
-        // Convert the string into a character array
-        char[] chars = input.toCharArray();
-
-        // Initialize pointer at the beginning
-        int start = 0;
-
-        // Initialize pointer at the end
-        int end = chars.length - 1;
-
-        // Assume palindrome initially
-        boolean isPalindrome = true;
-
-        // Continue comparison until pointers cross
-        while (start < end) {
-            if (chars[start] != chars[end]) {
-                isPalindrome = false;
-                break;
-            }
-            start++;
-            end--;
-        }
-
         System.out.println("=====================================================");
-        System.out.println("  Palindrome Checker - UC4: Two Pointer Technique   ");
+        System.out.println("   Welcome to Palindrome Checker Management System  ");
         System.out.println("=====================================================");
-        System.out.println("Input String : " + input);
-
-        if (isPalindrome) {
-            System.out.println("Result       : \"" + input + "\" IS a Palindrome!");
-        } else {
-            System.out.println("Result       : \"" + input + "\" is NOT a Palindrome.");
-        }
+        System.out.println("Application Version: 1.0");
+        System.out.println("Starting application...");
     }
 }
