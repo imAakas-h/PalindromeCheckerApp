@@ -1,43 +1,70 @@
 /**
  * =====================================================
- * MAIN CLASS - UseCase1PalindromeApp
+ * MAIN CLASS - UseCase5PalindromeCheckerApp
  * =====================================================
  *
- * Use Case 1: Application Entry & Welcome Message
+ * Use Case 5: Stack Based Palindrome Checker
  *
  * Description:
- * This class represents the entry point of the
- * Palindrome Checker Management System.
+ * This class validates a palindrome using a Stack
+ * data structure which follows the LIFO principle.
  *
  * At this stage, the application:
- * - Starts execution from the main() method
- * - Displays a welcome message
- * - Shows application version
+ * - Pushes characters into a stack
+ * - Pops them in reverse order
+ * - Compares with original sequence
+ * - Displays the result
  *
- * No palindrome logic is implemented yet.
- *
- * The goal is to establish a clear startup flow.
+ * This maps stack behavior to reversal logic.
  *
  * @author Developer
- * @version 1.0
+ * @version 5.0
  */
+
+import java.util.Stack;
 
 public class PalindromeCheckerApp {
 
     /**
-     * Application entry point.
-     *
-     * This is the first method executed by the JVM
-     * when the program starts.
+     * Application entry point for UC5.
      *
      * @param args Command-line arguments
      */
 
     public static void main(String[] args) {
+
+        // Declare and initialize the input string
+        String input = "noon";
+
+        // Create a Stack to store characters
+        Stack<Character> stack = new Stack<>();
+
+        // Push each character of the string into the stack
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
+
+        // Assume palindrome initially
+        boolean isPalindrome = true;
+
+        // Iterate again through original string
+        // and compare with popped stack characters
+        for (char c : input.toCharArray()) {
+            if (c != stack.pop()) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
         System.out.println("=====================================================");
-        System.out.println("   Welcome to Palindrome Checker Management System  ");
+        System.out.println("   Palindrome Checker - UC5: Stack Based Method     ");
         System.out.println("=====================================================");
-        System.out.println("Application Version: 1.0");
-        System.out.println("Starting application...");
+        System.out.println("Input String : " + input);
+
+        if (isPalindrome) {
+            System.out.println("Result       : \"" + input + "\" IS a Palindrome!");
+        } else {
+            System.out.println("Result       : \"" + input + "\" is NOT a Palindrome.");
+        }
     }
 }
