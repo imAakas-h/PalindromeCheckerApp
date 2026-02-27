@@ -1,70 +1,32 @@
-/**
- * =====================================================
- * MAIN CLASS - UseCase7PalindromeCheckerApp
- * =====================================================
- *
- * Use Case 7: Deque Based Palindrome Checker
- *
- * Description:
- * This class validates a palindrome using a Deque
- * (Double Ended Queue) data structure.
- *
- * At this stage, the application:
- * - Adds characters to a Deque
- * - Compares characters from both ends simultaneously
- * - Determines whether the string is a palindrome
- * - Displays the result
- *
- * This introduces double-ended access for comparison.
- *
- * @author Developer
- * @version 7.0
- */
-
-import java.util.ArrayDeque;
-import java.util.Deque;
-
 public class PalindromeCheckerApp {
 
     /**
-     * Application entry point for UC7.
+     * Application entry point for UC9.
      *
      * @param args Command-line arguments
      */
-
     public static void main(String[] args) {
+        String input = "madam";
+        boolean result = check(input, 0, input.length() - 1);
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + result);
+    }
 
-        // Define the input string
-        String input = "refer";
-
-        // Create a Deque to store characters
-        Deque<Character> deque = new ArrayDeque<>();
-
-        // Add each character to the deque
-        for (char c : input.toCharArray()) {
-            deque.addLast(c);
+    /**
+     * Recursively checks whether a string is palindrome.
+     *
+     * @param s Input string
+     * @param start Starting index
+     * @param end Ending index
+     * @return true if palindrome, otherwise false
+     */
+    private static boolean check(String s, int start, int end) {
+        if (start >= end) {
+            return true;
         }
-
-        // Flag to track palindrome result
-        boolean isPalindrome = true;
-
-        // Continue comparison while more than one element exists
-        while (deque.size() > 1) {
-            if (deque.pollFirst() != deque.pollLast()) {
-                isPalindrome = false;
-                break;
-            }
+        if (s.charAt(start) != s.charAt(end)) {
+            return false;
         }
-
-        System.out.println("=====================================================");
-        System.out.println("   Palindrome Checker - UC7: Deque Based Method     ");
-        System.out.println("=====================================================");
-        System.out.println("Input String : " + input);
-
-        if (isPalindrome) {
-            System.out.println("Result       : \"" + input + "\" IS a Palindrome!");
-        } else {
-            System.out.println("Result       : \"" + input + "\" is NOT a Palindrome.");
-        }
+        return check(s, start + 1, end - 1);
     }
 }
